@@ -57,7 +57,20 @@ export class ResenaPage implements OnInit {
   back() {
     this.navCtrl.back();
   }
-  nuevaResena(){
+  irNuevo(){
+    this.servicio.closeSession('id_resena');
+  // Crear sesión con el mismo id_libro obtenido en getSession
+  this.servicio.createSession('id_libro', this.id_libro);
+  
+   this.navCtrl.navigateRoot(['resena-edit']);
+  }
+
+  irEditar(id_resena:string){
+    this.servicio.createSession('id_resena',id_resena);
+    this.navCtrl.navigateRoot(['resena-edit']);
+  }
+  eliminar(id_resena: string) {
     
   }
+
 }

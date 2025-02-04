@@ -134,3 +134,61 @@ if ($post['accion'] == "mresenas") {
     echo $respuesta;
 }
 
+if ($post['accion'] == "vresena") {
+    $sentencia = sprintf("SELECT id_resena, libro_id, puntuacion, resena FROM resenas WHERE id_resena = %s",
+        $post['id_resena']
+    );
+
+    $result = mysqli_query($mysqli, $sentencia);
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+            $datos[] = array(
+                'id_resena' => $row['id_resena'],
+                'libro_id' => $row['libro_id'],
+                'puntuacion' => $row['puntuacion'],
+                'resena' => $row['resena']
+            );
+        }
+        $respuesta = json_encode(array('estado' => true, "resena" => $datos[0]));
+    } else {
+        $respuesta = json_encode(array('estado' => false, "mensaje" => "No hay datos"));
+    }
+    echo $respuesta;
+}
+
+if ($post['accion'] == "nresena") {
+    $libro_id = $post['libro_id'];
+    $puntuacion = $post['puntuacion'];
+    $resena = $post['resena'];
+
+    $sentencia = sprintf("INSERT INTO resenas (libro_id, puntuacion, resena) VALUES ('%s', '%s', '%s')",
+        $libro_id,
+        $puntuacion,
+        $resena
+    );
+
+    $result = mysqli_query($mysqli, $sentencia);
+    if ($result) {
+        $respuesta = json_encode(array('estado' => true, 'mensaje' => "Reseña agregada correctamente"));
+    } else {
+        $respuesta = json_encode(array('estado' => false, 'mensaje' => "Error al insertar la reseña"));
+    }
+    
+    echo $respuesta;
+}
+
+if ($post['accion'] == "uresena") {
+    $sentencia = sprintf("UPDATE resenas SET puntuacion='%s', resena='%s' WHERE id_resena=%s",
+        $post['puntuacion'],
+        $post['resena'],
+        $post['id_resena']
+    );
+
+    $result = mysqli_query($mysqli, $sentencia);
+    if ($result) {
+        $respuesta = json_encode(array('estado' => true, "mensaje" => "Reseña actualizada correctamente"));
+    } else {
+        $respuesta = json_encode(array('estado' => false, "mensaje" => "Error al actualizar la reseña"));
+    }
+    echo $respuesta;
+}
