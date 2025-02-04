@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Formulario Libro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="stacked" class="bold-label">Título:</ion-label>
+    <ion-input type="text" [(ngModel)]="txt_titulo"></ion-input>
+  </ion-item>
+  <ion-label position="stacked" class="bold-label" color="danger">{{mensaje}}</ion-label>
+  <ion-item>
+    <ion-label position="stacked" class="bold-label">Descripción:</ion-label>
+    <ion-input type="text" [(ngModel)]="txt_descripcion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="verificar()" expand="block" shape="round">
+      Guardar
+    </ion-button>
+    <ion-button (click)="back()" expand="block" color="danger" shape="round">
+      Cancelar
+    </ion-button>
+  </ion-item>
+</ion-content>

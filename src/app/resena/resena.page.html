@@ -1,0 +1,42 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ libro.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button (click)="nuevaResena()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<Strong> Descripción </Strong>
+<ion-content [fullscreen]="true">
+  <ion-card-content>
+    <Strong> Descripción </Strong>
+  </ion-card-content>
+  <ion-card>
+    <ion-card-content>
+      {{ libro.descripcion }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Reseñas</ion-label>
+      
+    </ion-list-header>
+    <ion-item *ngFor="let resena of resenas">
+      <ion-label>
+        <h2>Puntuación: {{ resena.puntuacion }}</h2>
+        <p>{{ resena.resena }}</p>
+        <small>{{ resena.fecha }}</small>
+      </ion-label>
+      <ion-button fill="clear" color="warning">Editar</ion-button>
+      <ion-button fill="clear" color="danger">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

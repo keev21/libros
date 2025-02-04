@@ -11,6 +11,20 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'libro-edit',
+    loadChildren: () => import('./libro-edit/libro-edit.module').then( m => m.LibroEditPageModule)
+  },
+  {
+    path: 'resena',
+    loadChildren: () => import('./resena/resena.module').then( m => m.ResenaPageModule)
+  },
+  {
+    path: 'resena-edit',
+    loadChildren: () => import('./resena-edit/resena-edit.module').then( m => m.ResenaEditPageModule)
+  }
+  
+  
 ];
 
 @NgModule({
