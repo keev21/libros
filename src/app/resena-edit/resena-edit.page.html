@@ -1,11 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-title>Formulario reseñas</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button (click)="back()"></ion-back-button>
+      <ion-button (click)="back()">
+        Atras
+      </ion-button>
     </ion-buttons>
-    <ion-title>{{ id_resena ? 'Editar Reseña' : 'Nueva Reseña' }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-item>

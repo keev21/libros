@@ -1,12 +1,16 @@
 
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button (click)="back()"></ion-back-button>
-    </ion-buttons>
     <ion-title>{{ libro.titulo }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        Atras
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-fab horizontal="end" vertical="bottom" slot="fixed">
   <ion-fab-button (click)="irNuevo()">
     <ion-icon name="add"></ion-icon>
