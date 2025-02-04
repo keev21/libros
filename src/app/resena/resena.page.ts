@@ -70,7 +70,20 @@ export class ResenaPage implements OnInit {
     this.navCtrl.navigateRoot(['resena-edit']);
   }
   eliminar(id_resena: string) {
-    
+    let datos = {
+      "accion": "eresena",
+      "codigo": id_resena
+    };
+  
+    this.servicio.postData(datos).subscribe((res: any) => {
+      this.servicio.showToast(res.mensaje);
+  
+      if (res.estado == true) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
+      }
+    });
   }
 
 }

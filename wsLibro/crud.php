@@ -192,3 +192,18 @@ if ($post['accion'] == "uresena") {
     }
     echo $respuesta;
 }
+
+if($post['accion']=="eresena")
+{
+    $sentencia=sprintf("DELETE FROM resenas WHERE id_resena=%d", $post['codigo']);
+    $result=mysqli_query($mysqli, $sentencia);
+    if($result)
+    {
+        $respuesta=json_encode(array('estado'=>true, "mensaje"=>"Resena eliminada"));
+    }
+    else
+    {
+        $respuesta=json_encode(array('estado'=>false, "mensaje"=>"No se pudo eliminar el libro"));
+    }
+    echo $respuesta;
+}
